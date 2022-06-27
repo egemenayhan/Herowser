@@ -1,0 +1,6 @@
+framework module Pods_Herowser {
+  umbrella header "Pods-Herowser-umbrella.h"
+
+  export *
+  module * { export * }
+}
