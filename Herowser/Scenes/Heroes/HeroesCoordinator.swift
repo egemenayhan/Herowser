@@ -21,6 +21,7 @@ class HeroesCoordinator: NSObject, Coordinator {
     func start() {
         let controller = HeroesViewController.instantiate()
         controller.coordinator = self
+        controller.viewModel = HeroesViewModel()
         router.push(controller) { [weak self] in
             self?.parentCoordinator?.childDidFinish(self)
         }
