@@ -47,7 +47,7 @@ class HeroesViewController: UIViewController, Instantiatable {
             guard let self = self else { return }
             switch change {
             case .refreshLoading:
-                self.refreshControl.beginRefreshing()// TODO: programaticallyBeginRefreshing(in: self.tableView)
+                self.refreshControl.beginRefreshing()
             case .refreshLoaded:
                 self.refreshControl.endRefreshing()
             case .paginationLoading:
@@ -80,6 +80,7 @@ class HeroesViewController: UIViewController, Instantiatable {
                 self.paginationView.isHidden = self.viewModel?.showFavorites ?? true
                 self.tableView.reloadSections([0], with: .automatic)
                 self.updateFavoriteButtonState()
+                self.title = (self.viewModel?.showFavorites ?? false) ? "Favorites" : "Herowser"
             }
         })
     }
@@ -195,11 +196,7 @@ extension HeroesViewController: UITableViewDelegate {
         let action = UIContextualAction(
             style: .normal,
             title: hero.isFavorite ? "Unfavorite" : "Favourite"
-        ) { [weak self] (action, view, completionHandler) in
-            guard let self = self else {
-                completionHandler(false)
-                return
-            }
+        ) { (_, _, completionHandler) in
             FavoritesManager.shared.toggleFavoriteState(for: hero)
             completionHandler(true)
         }
