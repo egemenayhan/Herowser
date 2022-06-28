@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Combine
+import CoreMedia
 
 struct HeroesState {
 
@@ -22,6 +24,8 @@ struct HeroesState {
         case reloaded
         case paginated(diff: Range<Int>)
         case errorOcurred(String?)
+        case favoriteStateChanged(index: Int?)
+        case showFavoritesToggled
     }
 
 }
@@ -35,7 +39,38 @@ class HeroesViewModel: StatefulViewModel<HeroesState.Change> {
 
     var state = HeroesState()
     var activeTask: URLSessionTask?
+    private(set) var showFavorites = false
     private var fetchRetryCount = 0
+    private var cancellable: Cancellable?
+
+    var dataSource: [Hero] {
+        showFavorites ? FavoritesManager.shared.heroes : state.heroes
+    }
+
+    override init() {
+        super.init()
+        cancellable = NotificationCenter.default
+            .publisher(for: Notification.Name.favoriteStateUpdatedNotification)
+            .sink(receiveValue: { [weak self] notification in
+                guard let self = self else { return }
+
+                guard self.showFavorites else {
+                    if let id = notification.userInfo?[NotificationInfoKeys.heroID] as? Int,
+                       let index = self.dataSource.firstIndex(where: { $0.id == id })  {
+
+                        self.emit(change: .favoriteStateChanged(index: index))
+                    }
+                    return
+                }
+
+                self.emit(change: .favoriteStateChanged(index: nil))
+            })
+    }
+
+    func toggleFavorites() {
+        showFavorites.toggle()
+        emit(change: .showFavoritesToggled)
+    }
 
     func reloadData() {
         loadData()

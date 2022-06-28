@@ -38,6 +38,7 @@ class HeroesViewController: UIViewController, Instantiatable {
         super.viewDidLoad()
 
         setupUI()
+        setupNavigationBar()
         viewModel?.reloadData()
     }
 
@@ -69,6 +70,16 @@ class HeroesViewController: UIViewController, Instantiatable {
             case .errorOcurred(let error):
                 self.showEmptyViewIfNecessary()
                 self.showError(message: error)
+            case .favoriteStateChanged(let index):
+                if let index = index {
+                    self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                } else {
+                    self.tableView.reloadData()
+                }
+            case .showFavoritesToggled:
+                self.paginationView.isHidden = self.viewModel?.showFavorites ?? true
+                self.tableView.reloadSections([0], with: .automatic)
+                self.updateFavoriteButtonState()
             }
         })
     }
@@ -100,6 +111,25 @@ class HeroesViewController: UIViewController, Instantiatable {
         tableView.rowHeight = 100
     }
 
+    private func setupNavigationBar() {
+        updateFavoriteButtonState()
+    }
+
+    private func updateFavoriteButtonState() {
+        let barButton = UIBarButtonItem(
+            image: UIImage(systemName: (viewModel?.showFavorites ?? false) ? "star.fill" : "star"),
+            style: .done,
+            target: self,
+            action: #selector(toggleFavorites)
+        )
+        barButton.tintColor = .systemBlue
+        navigationItem.rightBarButtonItem = barButton
+    }
+
+    @objc private func toggleFavorites() {
+        viewModel?.toggleFavorites()
+    }
+
     @objc private func refresh(_ sender: AnyObject) {
         viewModel?.reloadData()
     }
@@ -116,7 +146,7 @@ class HeroesViewController: UIViewController, Instantiatable {
     }
 
     private func showEmptyViewIfNecessary() {
-        guard viewModel?.state.heroes.isEmpty ?? true else {
+        guard viewModel?.dataSource.isEmpty ?? true else {
             tableView.backgroundView = nil
             return
         }
@@ -128,7 +158,7 @@ class HeroesViewController: UIViewController, Instantiatable {
 extension HeroesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.state.heroes.count ?? 0
+        return viewModel?.dataSource.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -137,7 +167,7 @@ extension HeroesViewController: UITableViewDataSource {
             for: indexPath
         ) as? HeroTableViewCell else { return UITableViewCell() }
 
-        if let hero = viewModel?.state.heroes[indexPath.row] {
+        if let hero = viewModel?.dataSource[indexPath.row] {
             cell.configureUI(hero: hero)
         }
 
@@ -149,15 +179,32 @@ extension HeroesViewController: UITableViewDataSource {
 extension HeroesViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == (viewModel?.state.heroes.count ?? 0) - 1 {
+        if indexPath.row == (viewModel?.dataSource.count ?? 0) - 1, !(viewModel?.showFavorites ?? false) {
             viewModel?.nextPage()
         }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let hero = viewModel?.state.heroes[indexPath.row] else { return }
+        guard let hero = viewModel?.dataSource[indexPath.row] else { return }
         coordinator?.showHeroDetail(hero: hero)
+    }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard let hero = self.viewModel?.dataSource[indexPath.row] else { return nil }
+        let action = UIContextualAction(
+            style: .normal,
+            title: hero.isFavorite ? "Unfavorite" : "Favourite"
+        ) { [weak self] (action, view, completionHandler) in
+            guard let self = self else {
+                completionHandler(false)
+                return
+            }
+            FavoritesManager.shared.toggleFavoriteState(for: hero)
+            completionHandler(true)
+        }
+        action.backgroundColor = .systemBlue
+        return UISwipeActionsConfiguration(actions: [action])
     }
 
 }

@@ -18,6 +18,10 @@ struct Hero: Codable {
         case id, name, description, thumbnail
     }
 
+    var isFavorite: Bool {
+        FavoritesManager.shared.isFavorite(heroID: id)
+    }
+
 }
 
 struct Thumbnail: Codable {

@@ -15,6 +15,7 @@ class HeroTableViewCell: UITableViewCell {
     @IBOutlet weak var heroImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var favoriteStackView: UIStackView!
 
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -33,6 +34,7 @@ class HeroTableViewCell: UITableViewCell {
         nameLabel.text = hero.name
         descriptionLabel.text = hero.description
         descriptionLabel.isHidden = hero.description?.isEmpty ?? true
+        favoriteStackView.isHidden = !hero.isFavorite
     }
 
 }

@@ -17,6 +17,7 @@
 		7B6CA8EC286B7261000FC089 /* HeroDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6CA8EB286B7261000FC089 /* HeroDetailHeaderView.swift */; };
 		7B6CA8EF286B74BB000FC089 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6CA8EE286B74BB000FC089 /* Comic.swift */; };
 		7B6CA8F1286B7724000FC089 /* HeroComicsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6CA8F0286B7724000FC089 /* HeroComicsRequest.swift */; };
+		7B6CA8F4286B9BDF000FC089 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6CA8F3286B9BDF000FC089 /* FavoritesManager.swift */; };
 		7B9E9AF22869D69800756606 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E9AF12869D69800756606 /* AppDelegate.swift */; };
 		7B9E9AF42869D69800756606 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E9AF32869D69800756606 /* SceneDelegate.swift */; };
 		7B9E9AFB2869D69800756606 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B9E9AFA2869D69800756606 /* Assets.xcassets */; };
@@ -90,6 +91,7 @@
 		7B6CA8EB286B7261000FC089 /* HeroDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailHeaderView.swift; sourceTree = "<group>"; };
 		7B6CA8EE286B74BB000FC089 /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
 		7B6CA8F0286B7724000FC089 /* HeroComicsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroComicsRequest.swift; sourceTree = "<group>"; };
+		7B6CA8F3286B9BDF000FC089 /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		7B9E9AEE2869D69800756606 /* Herowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Herowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B9E9AF12869D69800756606 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B9E9AF32869D69800756606 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +189,20 @@
 			path = HeroDetail;
 			sourceTree = "<group>";
 		};
+		7B6CA8F2286B9BC3000FC089 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				7B9E9B21286A328000756606 /* MainCoordinator.swift */,
+				7B9E9B24286A32C300756606 /* RouterProtocol.swift */,
+				7B9E9B26286A32DF00756606 /* Handlers.swift */,
+				7B9E9B32286A36AC00756606 /* Instantiatable.swift */,
+				7B9E9B5D286A38D800756606 /* Environment.swift */,
+				7B9E9B5F286A394700756606 /* Logger.swift */,
+				7B9E9B6C286A4A5500756606 /* StatefulViewModel.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		7B9E9AE52869D69800756606 = {
 			isa = PBXGroup;
 			children = (
@@ -243,16 +259,11 @@
 		7B9E9B23286A32B100756606 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				7B6CA8F2286B9BC3000FC089 /* Core */,
 				7B9E9B6E286B009D00756606 /* Views */,
 				7B9E9B63286A39A500756606 /* Extensions */,
-				7B9E9B21286A328000756606 /* MainCoordinator.swift */,
-				7B9E9B24286A32C300756606 /* RouterProtocol.swift */,
-				7B9E9B26286A32DF00756606 /* Handlers.swift */,
-				7B9E9B32286A36AC00756606 /* Instantiatable.swift */,
-				7B9E9B5D286A38D800756606 /* Environment.swift */,
-				7B9E9B5F286A394700756606 /* Logger.swift */,
 				7B9E9B64286A447000756606 /* APICredentialGenerator.swift */,
-				7B9E9B6C286A4A5500756606 /* StatefulViewModel.swift */,
+				7B6CA8F3286B9BDF000FC089 /* FavoritesManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -683,6 +694,7 @@
 				7B9E9B27286A32DF00756606 /* Handlers.swift in Sources */,
 				7B9E9B69286A49E400756606 /* HeroesViewModel.swift in Sources */,
 				7B9E9B25286A32C300756606 /* RouterProtocol.swift in Sources */,
+				7B6CA8F4286B9BDF000FC089 /* FavoritesManager.swift in Sources */,
 				7B9E9B65286A447000756606 /* APICredentialGenerator.swift in Sources */,
 				7B9E9B5A286A388A00756606 /* Endpoint.swift in Sources */,
 				7B9E9B58286A388A00756606 /* HTTPError.swift in Sources */,

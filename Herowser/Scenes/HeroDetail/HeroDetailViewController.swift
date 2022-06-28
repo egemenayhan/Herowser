@@ -22,6 +22,7 @@ class HeroDetailViewController: UIViewController, Instantiatable {
         super.viewDidLoad()
 
         setupCollectionView()
+        updateFavoriteButtonState()
         viewModel?.fetchDetails()
     }
 
@@ -42,6 +43,8 @@ class HeroDetailViewController: UIViewController, Instantiatable {
                 } else {
                     self.collectionView.backgroundView = nil
                 }
+            case .favoriteStateChanged:
+                self.updateFavoriteButtonState()
             }
         })
     }
@@ -99,6 +102,21 @@ class HeroDetailViewController: UIViewController, Instantiatable {
         messageLabel.sizeToFit()
 
         collectionView.backgroundView = messageLabel;
+    }
+
+    private func updateFavoriteButtonState() {
+        let barButton = UIBarButtonItem(
+            image: UIImage(systemName: (viewModel?.state.hero.isFavorite ?? false) ? "star.fill" : "star"),
+            style: .done,
+            target: self,
+            action: #selector(toggleFavorite)
+        )
+        barButton.tintColor = .systemBlue
+        navigationItem.rightBarButtonItem = barButton
+    }
+
+    @objc private func toggleFavorite() {
+        viewModel?.toggleFavorite()
     }
 
 }

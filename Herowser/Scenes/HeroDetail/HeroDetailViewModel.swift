@@ -14,7 +14,10 @@ struct HeroDetailState {
     var comics: [Comic]?
 
     enum Change: StateChange {
-        case loading, loaded, comicsFetched
+        case loading
+        case loaded
+        case comicsFetched
+        case favoriteStateChanged
     }
 
 }
@@ -27,6 +30,16 @@ class HeroDetailViewModel: StatefulViewModel<HeroDetailState.Change> {
     init(state: HeroDetailState) {
         self.state = state
         super.init()
+
+        NotificationCenter.default
+            .publisher(for: Notification.Name.favoriteStateUpdatedNotification)
+            .sink(receiveValue: { [weak self] notification in
+                guard let self = self,
+                      let id = notification.userInfo?[NotificationInfoKeys.heroID] as? Int,
+                      id == state.hero.id else { return }
+                self.emit(change: .favoriteStateChanged)
+            })
+            .store(in: &subscriptions)
     }
 
     func fetchDetails() {
@@ -48,6 +61,10 @@ class HeroDetailViewModel: StatefulViewModel<HeroDetailState.Change> {
                 self.emit(change: .comicsFetched)
             })
             .store(in: &subscriptions)
+    }
+
+    func toggleFavorite() {
+        FavoritesManager.shared.toggleFavoriteState(for: state.hero)
     }
 
 }
