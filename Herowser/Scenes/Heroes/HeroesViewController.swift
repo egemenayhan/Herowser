@@ -151,4 +151,9 @@ extension HeroesViewController: UITableViewDelegate {
         }
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let hero = viewModel?.state.heroes[indexPath.row] else { return }
+        coordinator?.showHeroDetail(hero: hero)
+    }
+
 }

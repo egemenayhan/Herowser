@@ -1,24 +1,28 @@
 //
-//  HeroesRequest.swift
+//  HeroComicsRequest.swift
 //  Herowser
 //
-//  Created by Egemen Ayhan on 27.06.2022.
+//  Created by Egemen Ayhan on 28.06.2022.
 //
 
 import Alamofire
 
-struct HeroesRequest: MarvelAPIEndpoint {
+struct HeroComicsRequest: MarvelAPIEndpoint {
 
-    typealias Response = BaseResponse<[Hero]>
+    typealias Response = BaseResponse<[Comic]>
     var path = "/v1/public/characters"
     var method: HTTPMethod = .get
     var parameters: [String : Any]
 
-    init(page: Int, itemPerPage: Int) {
+    init(heroID: Int) {
+        path += "/\(heroID)/comics"
         let timestamp = Date().timeIntervalSince1970
         parameters = [
-            "limit": itemPerPage,
-            "offset": page * itemPerPage,
+            "characterId": heroID,
+            "startYear": 2005,
+            "orderBy": "-onsaleDate",
+            "limit": 10,
+            "offset": 0,
             "apikey": APICredentialGenerator.Constants.publicKey,
             "ts": timestamp,
             "hash": APICredentialGenerator.generate(timeStamp: timestamp)

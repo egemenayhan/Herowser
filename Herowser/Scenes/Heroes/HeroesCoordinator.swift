@@ -27,8 +27,10 @@ class HeroesCoordinator: NSObject, Coordinator {
         }
     }
 
-    func showHeroDetail() {
-
+    func showHeroDetail(hero: Hero) {
+        let detailCoordinator = HeroDetailCoordinator(with: router, hero: hero)
+        childCoordinators.append(detailCoordinator)
+        detailCoordinator.start()
     }
 
 }

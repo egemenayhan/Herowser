@@ -10,6 +10,13 @@
 		12C15712606BFD1D57B2F2DB /* Pods_Herowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 442E8A9712BB769C0D7BCE6A /* Pods_Herowser.framework */; };
 		4BDD444C80BD59C904BCCCC5 /* Pods_Herowser_HerowserUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 567E665CC023147B0ECEF313 /* Pods_Herowser_HerowserUITests.framework */; };
 		78395EC00650B9FC08966907 /* Pods_HerowserTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4B870977A50A0A3E19B809 /* Pods_HerowserTests.framework */; };
+		7B6CA8E3286B68F1000FC089 /* HeroDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B6CA8E2286B68F1000FC089 /* HeroDetailViewController.storyboard */; };
+		7B6CA8E5286B6F95000FC089 /* HeroDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6CA8E4286B6F95000FC089 /* HeroDetailViewModel.swift */; };
+		7B6CA8E7286B6F9F000FC089 /* HeroDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6CA8E6286B6F9F000FC089 /* HeroDetailCoordinator.swift */; };
+		7B6CA8E9286B723D000FC089 /* ComicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6CA8E8286B723D000FC089 /* ComicCollectionViewCell.swift */; };
+		7B6CA8EC286B7261000FC089 /* HeroDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6CA8EB286B7261000FC089 /* HeroDetailHeaderView.swift */; };
+		7B6CA8EF286B74BB000FC089 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6CA8EE286B74BB000FC089 /* Comic.swift */; };
+		7B6CA8F1286B7724000FC089 /* HeroComicsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6CA8F0286B7724000FC089 /* HeroComicsRequest.swift */; };
 		7B9E9AF22869D69800756606 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E9AF12869D69800756606 /* AppDelegate.swift */; };
 		7B9E9AF42869D69800756606 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E9AF32869D69800756606 /* SceneDelegate.swift */; };
 		7B9E9AFB2869D69800756606 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B9E9AFA2869D69800756606 /* Assets.xcassets */; };
@@ -76,6 +83,13 @@
 		4FD2681C1BB8DB79B35A4412 /* Pods-HerowserTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HerowserTests.debug.xcconfig"; path = "Target Support Files/Pods-HerowserTests/Pods-HerowserTests.debug.xcconfig"; sourceTree = "<group>"; };
 		567E665CC023147B0ECEF313 /* Pods_Herowser_HerowserUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Herowser_HerowserUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A4B870977A50A0A3E19B809 /* Pods_HerowserTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HerowserTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B6CA8E2286B68F1000FC089 /* HeroDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HeroDetailViewController.storyboard; sourceTree = "<group>"; };
+		7B6CA8E4286B6F95000FC089 /* HeroDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailViewModel.swift; sourceTree = "<group>"; };
+		7B6CA8E6286B6F9F000FC089 /* HeroDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailCoordinator.swift; sourceTree = "<group>"; };
+		7B6CA8E8286B723D000FC089 /* ComicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCollectionViewCell.swift; sourceTree = "<group>"; };
+		7B6CA8EB286B7261000FC089 /* HeroDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailHeaderView.swift; sourceTree = "<group>"; };
+		7B6CA8EE286B74BB000FC089 /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
+		7B6CA8F0286B7724000FC089 /* HeroComicsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroComicsRequest.swift; sourceTree = "<group>"; };
 		7B9E9AEE2869D69800756606 /* Herowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Herowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B9E9AF12869D69800756606 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B9E9AF32869D69800756606 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +169,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B6CA8EA286B7243000FC089 /* CollectionViewViews */ = {
+			isa = PBXGroup;
+			children = (
+				7B6CA8E8286B723D000FC089 /* ComicCollectionViewCell.swift */,
+				7B6CA8EB286B7261000FC089 /* HeroDetailHeaderView.swift */,
+			);
+			path = CollectionViewViews;
+			sourceTree = "<group>";
+		};
+		7B6CA8ED286B74AC000FC089 /* HeroDetail */ = {
+			isa = PBXGroup;
+			children = (
+				7B6CA8F0286B7724000FC089 /* HeroComicsRequest.swift */,
+				7B6CA8EE286B74BB000FC089 /* Comic.swift */,
+			);
+			path = HeroDetail;
+			sourceTree = "<group>";
+		};
 		7B9E9AE52869D69800756606 = {
 			isa = PBXGroup;
 			children = (
@@ -258,7 +290,11 @@
 		7B9E9B2F286A336F00756606 /* HeroDetail */ = {
 			isa = PBXGroup;
 			children = (
+				7B6CA8EA286B7243000FC089 /* CollectionViewViews */,
 				7B9E9B2D286A336B00756606 /* HeroDetailViewController.swift */,
+				7B6CA8E2286B68F1000FC089 /* HeroDetailViewController.storyboard */,
+				7B6CA8E4286B6F95000FC089 /* HeroDetailViewModel.swift */,
+				7B6CA8E6286B6F9F000FC089 /* HeroDetailCoordinator.swift */,
 			);
 			path = HeroDetail;
 			sourceTree = "<group>";
@@ -276,6 +312,7 @@
 		7B9E9B37286A388A00756606 /* Network Models */ = {
 			isa = PBXGroup;
 			children = (
+				7B6CA8ED286B74AC000FC089 /* HeroDetail */,
 				7B9E9B38286A388A00756606 /* Heroes */,
 				7B9E9B66286A45EE00756606 /* BaseResponse.swift */,
 			);
@@ -486,6 +523,7 @@
 			files = (
 				7B9E9B31286A366F00756606 /* HeroesViewController.storyboard in Resources */,
 				7B9E9AFE2869D69800756606 /* LaunchScreen.storyboard in Resources */,
+				7B6CA8E3286B68F1000FC089 /* HeroDetailViewController.storyboard in Resources */,
 				7B9E9AFB2869D69800756606 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -615,6 +653,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B9E9B59286A388A00756606 /* API.swift in Sources */,
+				7B6CA8F1286B7724000FC089 /* HeroComicsRequest.swift in Sources */,
 				7B9E9B55286A388A00756606 /* ParameterEncoding.swift in Sources */,
 				7B9E9B62286A399800756606 /* DateFormatter+Extensions.swift in Sources */,
 				7B9E9B53286A388A00756606 /* FORMEncoder.swift in Sources */,
@@ -622,12 +661,16 @@
 				7B9E9B60286A394700756606 /* Logger.swift in Sources */,
 				7B9E9B6D286A4A5500756606 /* StatefulViewModel.swift in Sources */,
 				7B9E9B22286A328000756606 /* MainCoordinator.swift in Sources */,
+				7B6CA8E7286B6F9F000FC089 /* HeroDetailCoordinator.swift in Sources */,
 				7B9E9B57286A388A00756606 /* Response.swift in Sources */,
+				7B6CA8E9286B723D000FC089 /* ComicCollectionViewCell.swift in Sources */,
 				7B9E9B70286B00B100756606 /* PaginationView.swift in Sources */,
 				7B9E9B56286A388A00756606 /* URLEncoder.swift in Sources */,
+				7B6CA8EC286B7261000FC089 /* HeroDetailHeaderView.swift in Sources */,
 				7B9E9B51286A388A00756606 /* BaseURL.swift in Sources */,
 				7B9E9B4E286A388A00756606 /* Hero.swift in Sources */,
 				7B9E9B52286A388A00756606 /* HeaderBuilder.swift in Sources */,
+				7B6CA8EF286B74BB000FC089 /* Comic.swift in Sources */,
 				7B9E9B33286A36AC00756606 /* Instantiatable.swift in Sources */,
 				7B9E9B4D286A388A00756606 /* HeroesRequest.swift in Sources */,
 				7B9E9B5B286A388A00756606 /* NetworkManager+Combine.swift in Sources */,
@@ -647,6 +690,7 @@
 				7B9E9B5E286A38D800756606 /* Environment.swift in Sources */,
 				7B9E9B54286A388A00756606 /* JSONEncoder.swift in Sources */,
 				7B9E9B5C286A388A00756606 /* NetworkManager.swift in Sources */,
+				7B6CA8E5286B6F95000FC089 /* HeroDetailViewModel.swift in Sources */,
 				7B9E9AF42869D69800756606 /* SceneDelegate.swift in Sources */,
 				7B9E9B35286A370600756606 /* HeroesCoordinator.swift in Sources */,
 			);

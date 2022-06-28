@@ -26,8 +26,7 @@ class HeroTableViewCell: UITableViewCell {
     }
 
     func configureUI(hero: Hero) {
-        if var path = hero.thumbnail?.path?.removingPercentEncoding, let ext = hero.thumbnail?.extension {
-            path += "/portrait_medium.\(ext)"
+        if let path = hero.thumbnail?.portraitPath {
             heroImageView.kf.setImage(with: URL(string: path))
         }
 

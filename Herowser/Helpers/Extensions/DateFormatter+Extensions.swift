@@ -11,7 +11,7 @@ public extension DateFormatter {
 
     static let serverFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         return formatter
     }()
@@ -82,6 +82,8 @@ public enum DateToStringFormat: String {
 
     /// "yyyy-MM-dd HH:mm:ss"
     case yyyyMMddHHmmssDashed = "yyyy-MM-dd HH:mm:ss"
+
+    case yyyy = "yyyy"
 }
 
 public extension String {
