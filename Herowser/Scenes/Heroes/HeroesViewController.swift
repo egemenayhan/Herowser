@@ -195,7 +195,7 @@ extension HeroesViewController: UITableViewDelegate {
         guard let hero = self.viewModel?.dataSource[indexPath.row] else { return nil }
         let action = UIContextualAction(
             style: .normal,
-            title: hero.isFavorite ? "Unfavorite" : "Favourite"
+            title: hero.isFavorite ? "Unfavorite" : "Favorite"
         ) { (_, _, completionHandler) in
             FavoritesManager.shared.toggleFavoriteState(for: hero)
             completionHandler(true)

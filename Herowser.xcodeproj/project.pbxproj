@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		12C15712606BFD1D57B2F2DB /* Pods_Herowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 442E8A9712BB769C0D7BCE6A /* Pods_Herowser.framework */; };
-		4BDD444C80BD59C904BCCCC5 /* Pods_Herowser_HerowserUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 567E665CC023147B0ECEF313 /* Pods_Herowser_HerowserUITests.framework */; };
 		78395EC00650B9FC08966907 /* Pods_HerowserTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4B870977A50A0A3E19B809 /* Pods_HerowserTests.framework */; };
 		7B6CA8E3286B68F1000FC089 /* HeroDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B6CA8E2286B68F1000FC089 /* HeroDetailViewController.storyboard */; };
 		7B6CA8E5286B6F95000FC089 /* HeroDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6CA8E4286B6F95000FC089 /* HeroDetailViewModel.swift */; };
@@ -23,8 +22,6 @@
 		7B9E9AFB2869D69800756606 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B9E9AFA2869D69800756606 /* Assets.xcassets */; };
 		7B9E9AFE2869D69800756606 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B9E9AFC2869D69800756606 /* LaunchScreen.storyboard */; };
 		7B9E9B092869D69800756606 /* HerowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E9B082869D69800756606 /* HerowserTests.swift */; };
-		7B9E9B132869D69800756606 /* HerowserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E9B122869D69800756606 /* HerowserUITests.swift */; };
-		7B9E9B152869D69800756606 /* HerowserUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E9B142869D69800756606 /* HerowserUITestsLaunchTests.swift */; };
 		7B9E9B22286A328000756606 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E9B21286A328000756606 /* MainCoordinator.swift */; };
 		7B9E9B25286A32C300756606 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E9B24286A32C300756606 /* RouterProtocol.swift */; };
 		7B9E9B27286A32DF00756606 /* Handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E9B26286A32DF00756606 /* Handlers.swift */; };
@@ -69,13 +66,6 @@
 			remoteGlobalIDString = 7B9E9AED2869D69800756606;
 			remoteInfo = Herowser;
 		};
-		7B9E9B0F2869D69800756606 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7B9E9AE62869D69800756606 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7B9E9AED2869D69800756606;
-			remoteInfo = Herowser;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -100,9 +90,6 @@
 		7B9E9AFF2869D69800756606 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B9E9B042869D69800756606 /* HerowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HerowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B9E9B082869D69800756606 /* HerowserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerowserTests.swift; sourceTree = "<group>"; };
-		7B9E9B0E2869D69800756606 /* HerowserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HerowserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B9E9B122869D69800756606 /* HerowserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerowserUITests.swift; sourceTree = "<group>"; };
-		7B9E9B142869D69800756606 /* HerowserUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerowserUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7B9E9B21286A328000756606 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		7B9E9B24286A32C300756606 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		7B9E9B26286A32DF00756606 /* Handlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handlers.swift; sourceTree = "<group>"; };
@@ -160,14 +147,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7B9E9B0B2869D69800756606 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4BDD444C80BD59C904BCCCC5 /* Pods_Herowser_HerowserUITests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -208,7 +187,6 @@
 			children = (
 				7B9E9AF02869D69800756606 /* Herowser */,
 				7B9E9B072869D69800756606 /* HerowserTests */,
-				7B9E9B112869D69800756606 /* HerowserUITests */,
 				7B9E9AEF2869D69800756606 /* Products */,
 				ED86F7106EDB698356CA0432 /* Pods */,
 				CA91B8604EE052D5D8709A33 /* Frameworks */,
@@ -220,7 +198,6 @@
 			children = (
 				7B9E9AEE2869D69800756606 /* Herowser.app */,
 				7B9E9B042869D69800756606 /* HerowserTests.xctest */,
-				7B9E9B0E2869D69800756606 /* HerowserUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -245,15 +222,6 @@
 				7B9E9B082869D69800756606 /* HerowserTests.swift */,
 			);
 			path = HerowserTests;
-			sourceTree = "<group>";
-		};
-		7B9E9B112869D69800756606 /* HerowserUITests */ = {
-			isa = PBXGroup;
-			children = (
-				7B9E9B122869D69800756606 /* HerowserUITests.swift */,
-				7B9E9B142869D69800756606 /* HerowserUITestsLaunchTests.swift */,
-			);
-			path = HerowserUITests;
 			sourceTree = "<group>";
 		};
 		7B9E9B23286A32B100756606 /* Helpers */ = {
@@ -464,26 +432,6 @@
 			productReference = 7B9E9B042869D69800756606 /* HerowserTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7B9E9B0D2869D69800756606 /* HerowserUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7B9E9B1E2869D69800756606 /* Build configuration list for PBXNativeTarget "HerowserUITests" */;
-			buildPhases = (
-				A71FF74E588FAF7C62338998 /* [CP] Check Pods Manifest.lock */,
-				7B9E9B0A2869D69800756606 /* Sources */,
-				7B9E9B0B2869D69800756606 /* Frameworks */,
-				7B9E9B0C2869D69800756606 /* Resources */,
-				8D051703208C0A748FE67C1E /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7B9E9B102869D69800756606 /* PBXTargetDependency */,
-			);
-			name = HerowserUITests;
-			productName = HerowserUITests;
-			productReference = 7B9E9B0E2869D69800756606 /* HerowserUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -498,10 +446,6 @@
 						CreatedOnToolsVersion = 13.4.1;
 					};
 					7B9E9B032869D69800756606 = {
-						CreatedOnToolsVersion = 13.4.1;
-						TestTargetID = 7B9E9AED2869D69800756606;
-					};
-					7B9E9B0D2869D69800756606 = {
 						CreatedOnToolsVersion = 13.4.1;
 						TestTargetID = 7B9E9AED2869D69800756606;
 					};
@@ -522,7 +466,6 @@
 			targets = (
 				7B9E9AED2869D69800756606 /* Herowser */,
 				7B9E9B032869D69800756606 /* HerowserTests */,
-				7B9E9B0D2869D69800756606 /* HerowserUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -540,13 +483,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7B9E9B022869D69800756606 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7B9E9B0C2869D69800756606 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -593,45 +529,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Herowser/Pods-Herowser-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8D051703208C0A748FE67C1E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Herowser-HerowserUITests/Pods-Herowser-HerowserUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Herowser-HerowserUITests/Pods-Herowser-HerowserUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Herowser-HerowserUITests/Pods-Herowser-HerowserUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A71FF74E588FAF7C62338998 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Herowser-HerowserUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CF8D0BBCE1B0AA8B3A1F0A3A /* [CP] Check Pods Manifest.lock */ = {
@@ -716,15 +613,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7B9E9B0A2869D69800756606 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7B9E9B152869D69800756606 /* HerowserUITestsLaunchTests.swift in Sources */,
-				7B9E9B132869D69800756606 /* HerowserUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -732,11 +620,6 @@
 			isa = PBXTargetDependency;
 			target = 7B9E9AED2869D69800756606 /* Herowser */;
 			targetProxy = 7B9E9B052869D69800756606 /* PBXContainerItemProxy */;
-		};
-		7B9E9B102869D69800756606 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7B9E9AED2869D69800756606 /* Herowser */;
-			targetProxy = 7B9E9B0F2869D69800756606 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -966,44 +849,6 @@
 			};
 			name = Release;
 		};
-		7B9E9B1F2869D69800756606 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B50EDCA502A6694420251289 /* Pods-Herowser-HerowserUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YDABZ672Z5;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.egemenayhan.HerowserUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Herowser;
-			};
-			name = Debug;
-		};
-		7B9E9B202869D69800756606 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2CE695A68DC76775B9B80306 /* Pods-Herowser-HerowserUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YDABZ672Z5;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.egemenayhan.HerowserUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Herowser;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1030,15 +875,6 @@
 			buildConfigurations = (
 				7B9E9B1C2869D69800756606 /* Debug */,
 				7B9E9B1D2869D69800756606 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7B9E9B1E2869D69800756606 /* Build configuration list for PBXNativeTarget "HerowserUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7B9E9B1F2869D69800756606 /* Debug */,
-				7B9E9B202869D69800756606 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
