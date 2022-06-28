@@ -62,10 +62,10 @@ class HeroDetailViewController: UIViewController, Instantiatable {
     private func makeCollectionLayout() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { (sectionIndex: Int, layoutEnv: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
-                                                  heightDimension: .estimated(200))
+                                                  heightDimension: .estimated(300))
 
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                                   heightDimension: .estimated(200))
+                                                   heightDimension: .estimated(300))
 
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
@@ -80,7 +80,7 @@ class HeroDetailViewController: UIViewController, Instantiatable {
                                                             bottom: 8,
                                                             trailing: 16)
             let footerHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                          heightDimension: .estimated(200.0))
+                                                          heightDimension: .estimated(300.0))
             let header = NSCollectionLayoutBoundarySupplementaryItem(
                 layoutSize: footerHeaderSize,
                 elementKind: UICollectionView.elementKindSectionHeader,

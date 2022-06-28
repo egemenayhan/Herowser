@@ -60,9 +60,12 @@ class HeroesViewController: UIViewController, Instantiatable {
                 self.tableView.contentOffset = .zero
                 self.tableView.reloadData()
                 self.showEmptyViewIfNecessary()
-            case .paginated(let heroes, let diffCount):
-                // TODO: handle new page insertion
-                self.tableView.reloadData()
+            case .paginated(let range):
+                var indexes: [IndexPath] = []
+                for index in range {
+                    indexes.append(IndexPath(row: index, section: 0))
+                }
+                self.tableView.insertRows(at: indexes, with: .automatic)
             case .errorOcurred(let error):
                 self.showEmptyViewIfNecessary()
                 self.showError(message: error)
@@ -88,7 +91,7 @@ class HeroesViewController: UIViewController, Instantiatable {
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         refreshControl.tintColor = .white
-        tableView.addSubview(refreshControl)
+        tableView.refreshControl = refreshControl
         tableView.dataSource = self
         tableView.separatorStyle = .singleLine
         tableView.separatorColor = .darkGray
@@ -152,6 +155,7 @@ extension HeroesViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         guard let hero = viewModel?.state.heroes[indexPath.row] else { return }
         coordinator?.showHeroDetail(hero: hero)
     }

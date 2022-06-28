@@ -20,7 +20,7 @@ struct HeroesState {
         case paginationLoaded
         case paginationError
         case reloaded
-        case paginated(newHeroes: [Hero], diffCount: Int)
+        case paginated(diff: Range<Int>)
         case errorOcurred(String?)
     }
 
@@ -109,8 +109,9 @@ class HeroesViewModel: StatefulViewModel<HeroesState.Change> {
         } else {
             let diffCount = baseResponse.count ?? 0
             guard diffCount > 0 else { return }
+            let beforeCount = state.heroes.count
             state.heroes.append(contentsOf: baseResponse.results ?? []) // append new heroes to our data source
-            emit(change: .paginated(newHeroes: baseResponse.results ?? [], diffCount: diffCount))
+            emit(change: .paginated(diff: beforeCount..<(beforeCount + diffCount)))
         }
     }
 
