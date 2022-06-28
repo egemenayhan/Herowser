@@ -16,7 +16,7 @@ struct BaseResponse<T: Codable>: Codable {
     var results: T?
 
     var hasNextPage: Bool {
-        return ((offset ?? 0) * (limit ?? 0)) < total ?? 0
+        return ((offset ?? 0) + (count ?? 0)) < (total ?? 0) // calculate current item count and compare with total to decide if there is next page
     }
 
     enum CodingKeys: String, CodingKey {

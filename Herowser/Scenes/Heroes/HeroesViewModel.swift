@@ -12,7 +12,6 @@ struct HeroesState {
     var heroes: [Hero] = []
     var nextPage: Int?
     var lastFetchAttempt: Int?
-    var isFetchInProgress = false
 
     enum Change: StateChange {
         case refreshLoading
@@ -53,23 +52,21 @@ class HeroesViewModel: StatefulViewModel<HeroesState.Change> {
     }
 
     private func loadData(page: Int = 0) {
-        guard !state.isFetchInProgress else {
+        guard activeTask == nil else {
             emit(change: .refreshLoaded)
             return
         }
         let isInitialFetch = page == 0 && state.heroes.isEmpty
         isInitialFetch ? emit(change: .refreshLoading) : emit(change: .paginationLoading)
-        state.isFetchInProgress = true
         state.lastFetchAttempt = page
 
-        let req = HeroesRequest(page: 0, itemPerPage: Constants.pageLimit)
+        let req = HeroesRequest(page: page, itemPerPage: Constants.pageLimit)
         activeTask = NetworkManager.shared.execute(request: req) { [weak self] response in
             guard let self = self else { return }
             self.activeTask = nil
 
             switch response.result {
             case .success(let baseResponse):
-                print(baseResponse.results)
                 self.handleResponse(baseResponse: baseResponse, isInitialFetch: isInitialFetch, page: page)
             case .failure(let error):
                 print(error.localizedDescription)
@@ -80,10 +77,9 @@ class HeroesViewModel: StatefulViewModel<HeroesState.Change> {
         }
     }
 
-    func handleResponse(baseResponse: HeroesRequest.Response, isInitialFetch: Bool, page: Int) {
-        guard baseResponse.count ?? 0 > 0 else { // automatically fetches next page if people count is 0
+    private func handleResponse(baseResponse: HeroesRequest.Response, isInitialFetch: Bool, page: Int) {
+        guard baseResponse.count ?? 0 > 0 else { // automatically fetches next page if heroes count is 0
             let initialPageHasNextPage = (baseResponse.hasNextPage && isInitialFetch)
-//            let isNextPageDifferent = ((state.nextPage != nil) && !isInitialFetch && (state.nextPage != next))
             if (initialPageHasNextPage || state.nextPage != nil)
                 && fetchRetryCount < Constants.fetchRetryThreshold { // fetch if there is next page
                 emit(change: .refreshLoaded)
@@ -91,7 +87,7 @@ class HeroesViewModel: StatefulViewModel<HeroesState.Change> {
                 loadData(page: page + 1)
             } else if isInitialFetch,
                       state.heroes.isEmpty,
-                      fetchRetryCount < Constants.fetchRetryThreshold { // retry initial fetch if there is no next page and people
+                      fetchRetryCount < Constants.fetchRetryThreshold { // retry initial fetch if there is no next page and heroes
 
                 emit(change: .refreshLoaded)
                 fetchRetryCount += 1
@@ -107,13 +103,13 @@ class HeroesViewModel: StatefulViewModel<HeroesState.Change> {
         state.nextPage = baseResponse.hasNextPage ? page + 1 : nil
         isInitialFetch ? emit(change: .refreshLoaded) : emit(change: .paginationLoaded)
         fetchRetryCount = 0 // reset retry count on successfull operation
-        if isInitialFetch {
+        if isInitialFetch || page == 0 {
             state.heroes = baseResponse.results ?? []
             emit(change: .reloaded)
         } else {
             let diffCount = baseResponse.count ?? 0
             guard diffCount > 0 else { return }
-            state.heroes.append(contentsOf: baseResponse.results ?? []) // append new people to our data source
+            state.heroes.append(contentsOf: baseResponse.results ?? []) // append new heroes to our data source
             emit(change: .paginated(newHeroes: baseResponse.results ?? [], diffCount: diffCount))
         }
     }

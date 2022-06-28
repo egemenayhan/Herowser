@@ -22,5 +22,6 @@ struct Hero: Codable {
 struct Thumbnail: Codable {
 
     var path: String?
+    var `extension`: String?
 
 }
