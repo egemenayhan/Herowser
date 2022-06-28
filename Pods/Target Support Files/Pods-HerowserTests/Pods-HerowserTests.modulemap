@@ -1,0 +1,6 @@
+framework module Pods_HerowserTests {
+  umbrella header "Pods-HerowserTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
